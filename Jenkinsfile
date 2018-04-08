@@ -13,7 +13,7 @@ pipeline {
     }
     stage('SHRUG') {
       steps {
-        echo 'shrug'
+        echo 'More than just a shrug'
       }
     }
   }
