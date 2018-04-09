@@ -30,7 +30,7 @@ pipeline {
         }
         stage('IE11') {
           steps {
-            sh 'exit 1'
+            sh 'exit 0'
           }
         }
         stage('FireFox Stage') {
