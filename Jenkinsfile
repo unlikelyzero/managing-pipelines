@@ -21,6 +21,10 @@ pipeline {
         stage('UI Tests') {
           steps {
             sleep 4
+            retry(count: 3) {
+              echo 'try'
+            }
+            
           }
         }
         stage('Chrome') {
@@ -30,7 +34,7 @@ pipeline {
         }
         stage('IE11') {
           steps {
-            sh 'exit 0'
+            sh 'exit 1'
           }
         }
         stage('FireFox Stage') {
