@@ -4,7 +4,31 @@ pipeline {
     stage('NPM Build') {
       steps {
         echo 'I\'m Building!'
-        sh 'curl http://jenkins.jx.192.168.64.2.nip.io/job/test42demo/job/master/lastBuild/api/json | grep "\"result\":\"SUCCESS\"'
+      }
+    }
+    stage('UI Regression Tests') {
+      parallel {
+        stage('Chrome') {
+          steps {
+            sleep 3
+          }
+        }
+        stage('Firefox') {
+          steps {
+            sleep 4
+          }
+        }
+        stage('IE11') {
+          steps {
+            sleep 8
+            sh 'exit 1'
+          }
+        }
+      }
+    }
+    stage('Send notifications') {
+      steps {
+        echo 'HOOOORAY'
       }
     }
   }
